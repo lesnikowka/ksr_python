@@ -32,12 +32,21 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(10, 15, 21, 19))
         self.label_2.setObjectName("label_2")
         self.graph1Test = QtWidgets.QLabel(self.testTab)
-        self.graph1Test.setGeometry(QtCore.QRect(220, 0, 700, 430))
+        self.graph1Test.setGeometry(QtCore.QRect(270, 0, 700, 430))
+        self.graph1Test.setText("")
         self.graph1Test.setObjectName("graph1Test")
         self.graph2Test = QtWidgets.QLabel(self.testTab)
-        self.graph2Test.setGeometry(QtCore.QRect(220, 420, 700, 430))
+        self.graph2Test.setGeometry(QtCore.QRect(270, 420, 700, 430))
+        self.graph2Test.setText("")
         self.graph2Test.setObjectName("graph2Test")
         self.rootTabControl.addTab(self.testTab, "")
+        self.accuracy = QtWidgets.QWidget()
+        self.accuracy.setObjectName("accuracy")
+        self.label_3 = QtWidgets.QLabel(self.accuracy)
+        self.label_3.setGeometry(QtCore.QRect(10, 10, 1361, 821))
+        self.label_3.setText("")
+        self.label_3.setObjectName("label_3")
+        self.rootTabControl.addTab(self.accuracy, "")
         self.mainTab = QtWidgets.QWidget()
         self.mainTab.setObjectName("mainTab")
         self.startCalcMain = QtWidgets.QPushButton(self.mainTab)
@@ -50,10 +59,12 @@ class Ui_MainWindow(object):
         self.textEdit.setGeometry(QtCore.QRect(40, 10, 141, 31))
         self.textEdit.setObjectName("textEdit")
         self.graph1Main = QtWidgets.QLabel(self.mainTab)
-        self.graph1Main.setGeometry(QtCore.QRect(220, 0, 700, 430))
+        self.graph1Main.setGeometry(QtCore.QRect(270, 0, 700, 430))
+        self.graph1Main.setText("")
         self.graph1Main.setObjectName("graph1Main")
         self.graph2Main = QtWidgets.QLabel(self.mainTab)
-        self.graph2Main.setGeometry(QtCore.QRect(220, 420, 700, 430))
+        self.graph2Main.setGeometry(QtCore.QRect(270, 420, 700, 430))
+        self.graph2Main.setText("")
         self.graph2Main.setObjectName("graph2Main")
         self.rootTabControl.addTab(self.mainTab, "")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -66,7 +77,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.rootTabControl.setCurrentIndex(0)
+        self.rootTabControl.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -79,9 +90,8 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:9.6pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100</p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "N:"))
-        self.graph1Test.setText(_translate("MainWindow", "TextLabel"))
-        self.graph2Test.setText(_translate("MainWindow", "TextLabel"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.testTab), _translate("MainWindow", "Тестовая"))
+        self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.accuracy), _translate("MainWindow", "График точности для тестовой задачи"))
         self.startCalcMain.setText(_translate("MainWindow", "Начать вычисления"))
         self.label.setText(_translate("MainWindow", "N:"))
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -89,8 +99,6 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:9.6pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100</p></body></html>"))
-        self.graph1Main.setText(_translate("MainWindow", "TextLabel"))
-        self.graph2Main.setText(_translate("MainWindow", "TextLabel"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.mainTab), _translate("MainWindow", "Основная"))
 
 

@@ -28,7 +28,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         plt.plot(x, y)
         plt.savefig(graphName)
         plt.clf()
-        
+
         size = self.graph1Main.size()
         height = size.height()
         self.resizeImage(graphName, height)
