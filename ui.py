@@ -22,7 +22,14 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
     def drawMain(self):
         graphName = "graphMain.png"
 
-        x = [i for i in range(1000)]
+        N = 0
+
+        try:
+            N = int(self.gridNumberMain.toPlainText())
+        except BaseException:
+            return
+
+        x = [i for i in range(N)]
         y = [i * i for i in x]
 
         plt.plot(x, y)
@@ -31,6 +38,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
         size = self.graph1Main.size()
         height = size.height()
+        
         self.resizeImage(graphName, height)
 
         pixmap = QPixmap(graphName)
@@ -46,7 +54,14 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
     def drawTest(self):
         graphName = "graphTest.png"
 
-        x = [i for i in range(1000)]
+        N = 0
+
+        try:
+            N = int(self.gridNumberTest.toPlainText())
+        except BaseException:
+            return
+
+        x = [i for i in range(N)]
         y = [i * i * i for i in x]
 
         plt.subplot(111)
@@ -56,6 +71,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
         size = self.graph1Test.size()
         height = size.height()
+
         self.resizeImage(graphName, height)
 
         pixmap = QPixmap(graphName)

@@ -25,9 +25,9 @@ class Ui_MainWindow(object):
         self.startCalcTest = QtWidgets.QPushButton(self.testTab)
         self.startCalcTest.setGeometry(QtCore.QRect(10, 50, 161, 28))
         self.startCalcTest.setObjectName("startCalcTest")
-        self.textEdit_2 = QtWidgets.QTextEdit(self.testTab)
-        self.textEdit_2.setGeometry(QtCore.QRect(40, 10, 141, 31))
-        self.textEdit_2.setObjectName("textEdit_2")
+        self.gridNumberTest = QtWidgets.QTextEdit(self.testTab)
+        self.gridNumberTest.setGeometry(QtCore.QRect(40, 10, 141, 31))
+        self.gridNumberTest.setObjectName("gridNumberTest")
         self.label_2 = QtWidgets.QLabel(self.testTab)
         self.label_2.setGeometry(QtCore.QRect(10, 15, 21, 19))
         self.label_2.setObjectName("label_2")
@@ -55,9 +55,9 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.mainTab)
         self.label.setGeometry(QtCore.QRect(10, 15, 21, 19))
         self.label.setObjectName("label")
-        self.textEdit = QtWidgets.QTextEdit(self.mainTab)
-        self.textEdit.setGeometry(QtCore.QRect(40, 10, 141, 31))
-        self.textEdit.setObjectName("textEdit")
+        self.gridNumberMain = QtWidgets.QTextEdit(self.mainTab)
+        self.gridNumberMain.setGeometry(QtCore.QRect(40, 10, 141, 31))
+        self.gridNumberMain.setObjectName("gridNumberMain")
         self.graph1Main = QtWidgets.QLabel(self.mainTab)
         self.graph1Main.setGeometry(QtCore.QRect(270, 0, 700, 430))
         self.graph1Main.setText("")
@@ -84,7 +84,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.startCalcTest.setText(_translate("MainWindow", "Начать вычисления"))
-        self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.gridNumberTest.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:9.6pt; font-weight:400; font-style:normal;\">\n"
@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.accuracy), _translate("MainWindow", "График точности для тестовой задачи"))
         self.startCalcMain.setText(_translate("MainWindow", "Начать вычисления"))
         self.label.setText(_translate("MainWindow", "N:"))
-        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.gridNumberMain.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:9.6pt; font-weight:400; font-style:normal;\">\n"

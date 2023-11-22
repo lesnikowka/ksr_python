@@ -43,7 +43,7 @@
        <string>Начать вычисления</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_2">
+     <widget class="QTextEdit" name="gridNumberTest">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -148,7 +148,7 @@ p, li { white-space: pre-wrap; }
        <string>N:</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit">
+     <widget class="QTextEdit" name="gridNumberMain">
       <property name="geometry">
        <rect>
         <x>40</x>
