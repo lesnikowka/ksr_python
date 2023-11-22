@@ -14,11 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1099, 901)
+        MainWindow.resize(1389, 901)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.rootTabControl = QtWidgets.QTabWidget(self.centralwidget)
-        self.rootTabControl.setGeometry(QtCore.QRect(0, 0, 1091, 881))
+        self.rootTabControl.setGeometry(QtCore.QRect(0, 0, 1381, 881))
         self.rootTabControl.setObjectName("rootTabControl")
         self.testTab = QtWidgets.QWidget()
         self.testTab.setObjectName("testTab")
@@ -32,10 +32,10 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(10, 15, 21, 19))
         self.label_2.setObjectName("label_2")
         self.graph1Test = QtWidgets.QLabel(self.testTab)
-        self.graph1Test.setGeometry(QtCore.QRect(260, 30, 421, 301))
+        self.graph1Test.setGeometry(QtCore.QRect(220, 0, 700, 430))
         self.graph1Test.setObjectName("graph1Test")
         self.graph2Test = QtWidgets.QLabel(self.testTab)
-        self.graph2Test.setGeometry(QtCore.QRect(270, 370, 421, 301))
+        self.graph2Test.setGeometry(QtCore.QRect(220, 420, 700, 430))
         self.graph2Test.setObjectName("graph2Test")
         self.rootTabControl.addTab(self.testTab, "")
         self.mainTab = QtWidgets.QWidget()
@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
         self.rootTabControl.addTab(self.mainTab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1099, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1389, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.rootTabControl.setCurrentIndex(1)
+        self.rootTabControl.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

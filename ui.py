@@ -27,24 +27,19 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
         plt.plot(x, y)
         plt.savefig(graphName)
-
+        plt.clf()
+        
         size = self.graph1Main.size()
-        #width = size.width()
         height = size.height()
         self.resizeImage(graphName, height)
 
         pixmap = QPixmap(graphName)
-        #pixmap = pixmap.scaledToWidth(width)
-        pixmap = pixmap.scaledToHeight(height)
         self.graph1Main.setPixmap(pixmap)
 
         size = self.graph2Main.size()
-        #width = size.width()
         height = size.height()
 
         pixmap = QPixmap(graphName)
-        #pixmap = pixmap.scaledToWidth(width)
-        pixmap = pixmap.scaledToHeight(height)
         self.graph2Main.setPixmap(pixmap)
 
 
@@ -54,14 +49,24 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         x = [i for i in range(1000)]
         y = [i * i * i for i in x]
 
+        plt.subplot(111)
         plt.plot(x, y)
         plt.savefig(graphName)
+        plt.clf()
+
+        size = self.graph1Test.size()
+        height = size.height()
+        self.resizeImage(graphName, height)
 
         pixmap = QPixmap(graphName)
         self.graph1Test.setPixmap(pixmap)
 
+        size = self.graph2Test.size()
+        height = size.height()
+
         pixmap = QPixmap(graphName)
         self.graph2Test.setPixmap(pixmap)
+
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
