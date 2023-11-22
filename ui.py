@@ -3,6 +3,8 @@ from PyQt5 import QtWidgets
 import design
 from matplotlib import pyplot as plt
 from PyQt5.QtGui import QPixmap
+import cv2
+import imutils
 
 class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
     def __init__(self):
@@ -10,6 +12,12 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.setupUi(self)
         self.startCalcMain.clicked.connect(self.drawMain)
         self.startCalcTest.clicked.connect(self.drawTest)
+
+    def resizeImage(self, imageName, height):
+        image = cv2.imread(imageName)
+        resized = imutils.resize(image, height=height)
+
+        cv2.imwrite(imageName, resized)
 
     def drawMain(self):
         graphName = "graphMain.png"
@@ -21,26 +29,23 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         plt.savefig(graphName)
 
         size = self.graph1Main.size()
-        width = size.width()
+        #width = size.width()
         height = size.height()
+        self.resizeImage(graphName, height)
 
         pixmap = QPixmap(graphName)
-        pixmap = pixmap.scaledToWidth(width)
+        #pixmap = pixmap.scaledToWidth(width)
         pixmap = pixmap.scaledToHeight(height)
         self.graph1Main.setPixmap(pixmap)
 
-        size = self.graph1Main.size()
-
-        width = size.width()
+        size = self.graph2Main.size()
+        #width = size.width()
         height = size.height()
 
-        print(width, height)
-
-
-
-        #pixmap = QPixmap(graphName)
-        #self.graph2Main.setPixmap(pixmap)
-
+        pixmap = QPixmap(graphName)
+        #pixmap = pixmap.scaledToWidth(width)
+        pixmap = pixmap.scaledToHeight(height)
+        self.graph2Main.setPixmap(pixmap)
 
 
     def drawTest(self):
