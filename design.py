@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
         self.startCalcTest.setGeometry(QtCore.QRect(10, 50, 161, 28))
         self.startCalcTest.setObjectName("startCalcTest")
         self.gridNumberTest = QtWidgets.QTextEdit(self.testTab)
-        self.gridNumberTest.setGeometry(QtCore.QRect(40, 10, 141, 31))
+        self.gridNumberTest.setGeometry(QtCore.QRect(40, 10, 140, 30))
         self.gridNumberTest.setObjectName("gridNumberTest")
         self.label_2 = QtWidgets.QLabel(self.testTab)
         self.label_2.setGeometry(QtCore.QRect(10, 15, 21, 19))
@@ -48,9 +48,36 @@ class Ui_MainWindow(object):
         self.accuracy = QtWidgets.QWidget()
         self.accuracy.setObjectName("accuracy")
         self.label_3 = QtWidgets.QLabel(self.accuracy)
-        self.label_3.setGeometry(QtCore.QRect(10, 10, 1361, 821))
-        self.label_3.setText("")
+        self.label_3.setGeometry(QtCore.QRect(10, 15, 171, 19))
         self.label_3.setObjectName("label_3")
+        self.textEdit = QtWidgets.QTextEdit(self.accuracy)
+        self.textEdit.setGeometry(QtCore.QRect(10, 40, 100, 30))
+        self.textEdit.setObjectName("textEdit")
+        self.label_4 = QtWidgets.QLabel(self.accuracy)
+        self.label_4.setGeometry(QtCore.QRect(10, 80, 171, 16))
+        self.label_4.setObjectName("label_4")
+        self.textEdit_2 = QtWidgets.QTextEdit(self.accuracy)
+        self.textEdit_2.setGeometry(QtCore.QRect(10, 105, 100, 30))
+        self.textEdit_2.setObjectName("textEdit_2")
+        self.label_5 = QtWidgets.QLabel(self.accuracy)
+        self.label_5.setGeometry(QtCore.QRect(10, 145, 55, 16))
+        self.label_5.setObjectName("label_5")
+        self.textEdit_3 = QtWidgets.QTextEdit(self.accuracy)
+        self.textEdit_3.setGeometry(QtCore.QRect(10, 170, 100, 30))
+        self.textEdit_3.setObjectName("textEdit_3")
+        self.label_6 = QtWidgets.QLabel(self.accuracy)
+        self.label_6.setGeometry(QtCore.QRect(10, 210, 151, 16))
+        self.label_6.setObjectName("label_6")
+        self.textEdit_4 = QtWidgets.QTextEdit(self.accuracy)
+        self.textEdit_4.setGeometry(QtCore.QRect(10, 235, 100, 30))
+        self.textEdit_4.setObjectName("textEdit_4")
+        self.pushButton = QtWidgets.QPushButton(self.accuracy)
+        self.pushButton.setGeometry(QtCore.QRect(10, 280, 93, 28))
+        self.pushButton.setObjectName("pushButton")
+        self.label_7 = QtWidgets.QLabel(self.accuracy)
+        self.label_7.setGeometry(QtCore.QRect(210, 20, 1331, 811))
+        self.label_7.setText("")
+        self.label_7.setObjectName("label_7")
         self.rootTabControl.addTab(self.accuracy, "")
         self.mainTab = QtWidgets.QWidget()
         self.mainTab.setObjectName("mainTab")
@@ -61,7 +88,7 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QtCore.QRect(10, 15, 21, 19))
         self.label.setObjectName("label")
         self.gridNumberMain = QtWidgets.QTextEdit(self.mainTab)
-        self.gridNumberMain.setGeometry(QtCore.QRect(40, 10, 141, 31))
+        self.gridNumberMain.setGeometry(QtCore.QRect(40, 10, 140, 30))
         self.gridNumberMain.setObjectName("gridNumberMain")
         self.graph1Main = QtWidgets.QLabel(self.mainTab)
         self.graph1Main.setGeometry(QtCore.QRect(270, 0, 700, 430))
@@ -87,7 +114,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.rootTabControl.setCurrentIndex(0)
+        self.rootTabControl.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -101,6 +128,29 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9.6pt;\">100</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "N:"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.testTab), _translate("MainWindow", "Тестовая"))
+        self.label_3.setText(_translate("MainWindow", "Минимальное число шагов:"))
+        self.textEdit.setMarkdown(_translate("MainWindow", "10\n"
+"\n"
+""))
+        self.label_4.setText(_translate("MainWindow", "Максимальное число шагов:"))
+        self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">15</p></body></html>"))
+        self.label_5.setText(_translate("MainWindow", "Шаг:"))
+        self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">1</p></body></html>"))
+        self.label_6.setText(_translate("MainWindow", "Константа домножения:"))
+        self.textEdit_4.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">1</p></body></html>"))
+        self.pushButton.setText(_translate("MainWindow", "Построить"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.accuracy), _translate("MainWindow", "График точности для тестовой задачи"))
         self.startCalcMain.setText(_translate("MainWindow", "Начать вычисления"))
         self.label.setText(_translate("MainWindow", "N:"))
