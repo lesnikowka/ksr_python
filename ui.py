@@ -13,6 +13,14 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.startCalcMain.clicked.connect(self.drawMain)
         self.startCalcTest.clicked.connect(self.drawTest)
 
+        self.tableMain.setColumnCount(5)  # Set three columns
+        self.tableMain.setRowCount(1)
+        self.tableMain.setHorizontalHeaderLabels(["Номер узла", "X", "V", "V*", "V-V*"])
+
+        self.tableTest.setColumnCount(5)  # Set three columns
+        self.tableTest.setRowCount(1)
+        self.tableTest.setHorizontalHeaderLabels(["Номер узла", "X", "U", "V", "U-V"])
+
     def resizeImage(self, imageName, height):
         image = cv2.imread(imageName)
         resized = imutils.resize(image, height=height)
@@ -38,7 +46,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
         size = self.graph1Main.size()
         height = size.height()
-        
+
         self.resizeImage(graphName, height)
 
         pixmap = QPixmap(graphName)

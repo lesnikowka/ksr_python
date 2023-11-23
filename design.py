@@ -14,11 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1389, 901)
+        MainWindow.resize(1510, 901)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.rootTabControl = QtWidgets.QTabWidget(self.centralwidget)
-        self.rootTabControl.setGeometry(QtCore.QRect(0, 0, 1381, 881))
+        self.rootTabControl.setGeometry(QtCore.QRect(0, 0, 1511, 881))
         self.rootTabControl.setObjectName("rootTabControl")
         self.testTab = QtWidgets.QWidget()
         self.testTab.setObjectName("testTab")
@@ -39,6 +39,11 @@ class Ui_MainWindow(object):
         self.graph2Test.setGeometry(QtCore.QRect(270, 420, 700, 430))
         self.graph2Test.setText("")
         self.graph2Test.setObjectName("graph2Test")
+        self.tableTest = QtWidgets.QTableWidget(self.testTab)
+        self.tableTest.setGeometry(QtCore.QRect(850, 0, 651, 840))
+        self.tableTest.setObjectName("tableTest")
+        self.tableTest.setColumnCount(0)
+        self.tableTest.setRowCount(0)
         self.rootTabControl.addTab(self.testTab, "")
         self.accuracy = QtWidgets.QWidget()
         self.accuracy.setObjectName("accuracy")
@@ -66,10 +71,15 @@ class Ui_MainWindow(object):
         self.graph2Main.setGeometry(QtCore.QRect(270, 420, 700, 430))
         self.graph2Main.setText("")
         self.graph2Main.setObjectName("graph2Main")
+        self.tableMain = QtWidgets.QTableWidget(self.mainTab)
+        self.tableMain.setGeometry(QtCore.QRect(850, 0, 651, 840))
+        self.tableMain.setObjectName("tableMain")
+        self.tableMain.setColumnCount(0)
+        self.tableMain.setRowCount(0)
         self.rootTabControl.addTab(self.mainTab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1389, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1510, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -77,7 +87,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.rootTabControl.setCurrentIndex(2)
+        self.rootTabControl.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -87,8 +97,8 @@ class Ui_MainWindow(object):
         self.gridNumberTest.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:9.6pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9.6pt;\">100</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "N:"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.testTab), _translate("MainWindow", "Тестовая"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.accuracy), _translate("MainWindow", "График точности для тестовой задачи"))
@@ -97,8 +107,8 @@ class Ui_MainWindow(object):
         self.gridNumberMain.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:9.6pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">100</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9.6pt;\">100</span></p></body></html>"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.mainTab), _translate("MainWindow", "Основная"))
 
 
