@@ -7,7 +7,6 @@ from scipy import integrate
 a = 0 #граничные условия
 b = 1 #граничные условия
 eps = 0.5e-6 #погрешность
-N = 100 #число разбиений
 
 
 #Тестовая Задача
@@ -117,7 +116,7 @@ def matrixInit(k1, k2, q1, q2, f1, f2, mu1, mu2, ksi, n, a, b):
     return b, Ai, Bi, Ci
 
 
-def progonka(b, Ai, Bi, Ci, n):
+def runTrough(b, Ai, Bi, Ci, n):
     v = [0] * (n + 1)
     #прямой ход
     alpha = [0] * (n + 1)
@@ -133,42 +132,27 @@ def progonka(b, Ai, Bi, Ci, n):
         v[i] = alpha[i + 1] * v[i + 1] + betta[i + 1]
     return v
 
-#Тестовая задача ответ
-bs, Ai, Bi, Ci = matrixInit(k1test, k2test, q1test, q2test, f1test, f2test, 0, 0, 0.5, N, a, b)
-otvet = progonka(bs, Ai, Bi, Ci, N)
-#print(otvet)
-
-
 #Аналитическое решение тестовой
 def u(x):
-    if x >= 0 and x <= 0.5: 
+    if x >= 0 and x <= 0.5:
         return 0.289601 * np.exp(2 * x / 3) - 0.289601 * np.exp(-(2 * x / 3))
     elif x > 0.5 and x <= 1:
         return -0.110262 * np.exp(2 * x) - 1.36897 * np.exp(-(2 * x)) + 1
 
+def calculate(taskName, N):
+    if taskName == "test":
+        x = np.linspace(0, 1, N + 1)
+        bs, Ai, Bi, Ci = matrixInit(k1test, k2test, q1test, q2test, f1test, f2test, 0, 0, 0.5, N, a, b)
+        y = runTrough(bs, Ai, Bi, Ci, N)
+        u_ = [u(i) for i in x]
 
-xx = np.linspace(0, 1, N + 1)
-x = np.linspace(0, 1, N + 1)
-plt.plot(xx, otvet)
-uarray = []
+        return x, y, u_
 
-for i in range(N + 1):
-    uarray.append(u(x[i])) 
-plt.plot(x, uarray)
-#print(uarray)
-plt.show()
-
-
-#Основная задача
-m = 2 * N
-bs, Ai, Bi, Ci = matrixInit(k1, k2, q1, q2, f1, f2, 0, 0, 0.5, N, a, b)
-otvet = progonka(bs, Ai, Bi, Ci, N)
-#print(otvet)
-xx = np.linspace(0, 1, N + 1)
-plt.plot(xx, otvet)
-
-bs, Ai, Bi, Ci = matrixInit(k1, k2, q1, q2, f1, f2, 0, 0, 0.5, m, a, b)
-otvet = progonka(bs, Ai, Bi, Ci, m)
-#print(otvet)
-xx = np.linspace(0, 1, m + 1)
-plt.plot(xx, otvet)
+    else:
+        x = np.linspace(0, 1, N + 1)
+        bs, Ai, Bi, Ci = matrixInit(k1, k2, q1, q2, f1, f2, 0, 0, 0.5, N, a, b)
+        y = runTrough(bs, Ai, Bi, Ci, N)
+        x2 = np.linspace(0, 1, N * 2 + 1)
+        bs, Ai, Bi, Ci = matrixInit(k1, k2, q1, q2, f1, f2, 0, 0, 0.5, N * 2, a, b)
+        y2 = runTrough(bs, Ai, Bi, Ci, N*2)
+        return x, y, x2, y2
