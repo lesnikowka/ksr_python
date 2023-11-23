@@ -25,6 +25,27 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.tableTest.setRowCount(1)
         self.tableTest.setHorizontalHeaderLabels(["Номер узла", "X", "U", "V", "|U-V|"])
 
+        self.infoText = """
+Для решения задачи использована равномерная сетка с числом разбиений n = %;
+
+задача должна быть решена с заданной точностью ε = 0.5⋅10 –6; 
+
+задача решена с точностью ε2 = %; 
+
+максимальная разность численных решений в общих узлах сетки наблюдается в точке x=%;"""
+
+    def fillInfo(self, taskName, data):
+        text = self.infoText
+        for val in data:
+            text = text.replace("%", str(val), 1)
+        if taskName == "main":
+            self.infoMain.clear()
+            self.infoMain.append(text)
+        else:
+            self.infoTest.clear()
+            self.infoTest.append(text)
+
+
     def resizeImage(self, imageName, height):
         image = cv2.imread(imageName)
         resized = imutils.resize(image, height=height)
@@ -84,8 +105,9 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         for i in range(len(x)):
             self.addRowToTable(self.tableMain, [i + 1, x[i], y[i], y2[i], diff[i]])
 
-
-
+        maxdiff = max(diff)
+        maxdiffIndex = diff.index(maxdiff)
+        self.fillInfo("main", [N, maxdiff, x[maxdiffIndex]])
 
     def drawTest(self):
         graph1Name = "graph1Test.png"
@@ -125,6 +147,10 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
         for i in range(len(x)):
             self.addRowToTable(self.tableTest, [i + 1, x[i], y[i], y2[i], diff[i]])
+
+        maxdiff = max(diff)
+        maxdiffIndex = diff.index(maxdiff)
+        self.fillInfo("test", [N, maxdiff, x[maxdiffIndex]])
 
     def drawAccuracy(self):
         graphName = "accuracyGraph.png"

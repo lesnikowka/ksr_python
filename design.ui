@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="testTab">
      <attribute name="title">
@@ -107,6 +107,19 @@ p, li { white-space: pre-wrap; }
         <width>701</width>
         <height>840</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="infoTest">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>240</width>
+        <height>320</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -320,6 +333,9 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
      <widget class="QLabel" name="graph2Main">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -340,6 +356,22 @@ p, li { white-space: pre-wrap; }
         <width>701</width>
         <height>840</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="infoMain">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>240</width>
+        <height>320</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
