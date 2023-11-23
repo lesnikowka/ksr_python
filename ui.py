@@ -35,12 +35,12 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         rowCount = table.rowCount()
         columnCount = table.columnCount()
         for j in range(columnCount):
-            table.setItem(rowCount-1, j, QTableWidgetItem(str(data[j])))
+            table.setItem(rowCount-1, j, QTableWidgetItem(str(data[j])[:10]))
 
     def clearTable(self, table):
         rowCount = table.rowCount()
-        for i in range(0, rowCount - 1):
-            self.table.removeRow(1)
+        for i in range(0, rowCount - 2):
+            table.removeRow(1)
 
 
     def drawMain(self):
@@ -93,7 +93,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         N = 0
 
         try:
-            N = int(self.gridNumberMain.toPlainText())
+            N = int(self.gridNumberTest.toPlainText())
         except BaseException:
             return
 
