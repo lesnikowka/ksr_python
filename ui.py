@@ -1,11 +1,13 @@
 import sys
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtWidgets import QTabWidget, QTableWidgetItem
 import design
 from matplotlib import pyplot as plt
 from PyQt5.QtGui import QPixmap
 import cv2
 import imutils
 import method
+from PyQt5.QtCore import QSize, Qt
 
 class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
     def __init__(self):
@@ -27,6 +29,19 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         resized = imutils.resize(image, height=height)
 
         cv2.imwrite(imageName, resized)
+
+    def addRowToTable(self, table, data):
+        table.insertRow(table.rowCount())
+        rowCount = table.rowCount()
+        columnCount = table.columnCount()
+        for j in range(columnCount):
+            table.setItem(rowCount-1, j, QTableWidgetItem(str(data[j])))
+
+    def clearTable(self, table):
+        rowCount = table.rowCount()
+        for i in range(0, rowCount - 1):
+            self.table.removeRow(1)
+
 
     def drawMain(self):
         graph1Name = "graph1Main.png"
@@ -63,6 +78,13 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         pixmap = QPixmap(graph2Name)
         self.graph2Main.setPixmap(pixmap)
 
+        self.clearTable(self.tableMain)
+
+        for i in range(len(x)):
+            self.addRowToTable(self.tableMain, [i + 1, x[i], y[i], y2[i], diff[i]])
+
+
+
 
     def drawTest(self):
         graph1Name = "graph1Test.png"
@@ -97,6 +119,11 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.resizeImage(graph2Name, height)
         pixmap = QPixmap(graph2Name)
         self.graph2Test.setPixmap(pixmap)
+
+        self.clearTable(self.tableTest)
+
+        for i in range(len(x)):
+            self.addRowToTable(self.tableTest, [i + 1, x[i], y[i], y2[i], diff[i]])
 
 
 def main():
