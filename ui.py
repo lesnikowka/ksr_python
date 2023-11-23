@@ -123,7 +123,9 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         x, y, y2 = method.calculate("test", N)
         diff = [abs(y[i] - y2[i]) for i in range(len(y))]
 
+        plt.title("Синий - численное решение")
         plt.plot(x, y)
+        plt.plot(x, y2)
         plt.savefig(graph1Name)
         plt.clf()
 
