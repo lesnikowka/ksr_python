@@ -50,34 +50,34 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.accuracy)
         self.label_3.setGeometry(QtCore.QRect(10, 15, 171, 19))
         self.label_3.setObjectName("label_3")
-        self.textEdit = QtWidgets.QTextEdit(self.accuracy)
-        self.textEdit.setGeometry(QtCore.QRect(10, 40, 100, 30))
-        self.textEdit.setObjectName("textEdit")
+        self.minStep = QtWidgets.QTextEdit(self.accuracy)
+        self.minStep.setGeometry(QtCore.QRect(10, 40, 100, 30))
+        self.minStep.setObjectName("minStep")
         self.label_4 = QtWidgets.QLabel(self.accuracy)
         self.label_4.setGeometry(QtCore.QRect(10, 80, 171, 16))
         self.label_4.setObjectName("label_4")
-        self.textEdit_2 = QtWidgets.QTextEdit(self.accuracy)
-        self.textEdit_2.setGeometry(QtCore.QRect(10, 105, 100, 30))
-        self.textEdit_2.setObjectName("textEdit_2")
+        self.maxStep = QtWidgets.QTextEdit(self.accuracy)
+        self.maxStep.setGeometry(QtCore.QRect(10, 105, 100, 30))
+        self.maxStep.setObjectName("maxStep")
         self.label_5 = QtWidgets.QLabel(self.accuracy)
         self.label_5.setGeometry(QtCore.QRect(10, 145, 55, 16))
         self.label_5.setObjectName("label_5")
-        self.textEdit_3 = QtWidgets.QTextEdit(self.accuracy)
-        self.textEdit_3.setGeometry(QtCore.QRect(10, 170, 100, 30))
-        self.textEdit_3.setObjectName("textEdit_3")
+        self.step = QtWidgets.QTextEdit(self.accuracy)
+        self.step.setGeometry(QtCore.QRect(10, 170, 100, 30))
+        self.step.setObjectName("step")
         self.label_6 = QtWidgets.QLabel(self.accuracy)
         self.label_6.setGeometry(QtCore.QRect(10, 210, 151, 16))
         self.label_6.setObjectName("label_6")
-        self.textEdit_4 = QtWidgets.QTextEdit(self.accuracy)
-        self.textEdit_4.setGeometry(QtCore.QRect(10, 235, 100, 30))
-        self.textEdit_4.setObjectName("textEdit_4")
-        self.pushButton = QtWidgets.QPushButton(self.accuracy)
-        self.pushButton.setGeometry(QtCore.QRect(10, 280, 93, 28))
-        self.pushButton.setObjectName("pushButton")
-        self.label_7 = QtWidgets.QLabel(self.accuracy)
-        self.label_7.setGeometry(QtCore.QRect(210, 20, 1331, 811))
-        self.label_7.setText("")
-        self.label_7.setObjectName("label_7")
+        self.mult = QtWidgets.QTextEdit(self.accuracy)
+        self.mult.setGeometry(QtCore.QRect(10, 235, 100, 30))
+        self.mult.setObjectName("mult")
+        self.drawAccuracyButton = QtWidgets.QPushButton(self.accuracy)
+        self.drawAccuracyButton.setGeometry(QtCore.QRect(10, 280, 93, 28))
+        self.drawAccuracyButton.setObjectName("drawAccuracyButton")
+        self.graphAccuracy = QtWidgets.QLabel(self.accuracy)
+        self.graphAccuracy.setGeometry(QtCore.QRect(210, 20, 1331, 811))
+        self.graphAccuracy.setText("")
+        self.graphAccuracy.setObjectName("graphAccuracy")
         self.rootTabControl.addTab(self.accuracy, "")
         self.mainTab = QtWidgets.QWidget()
         self.mainTab.setObjectName("mainTab")
@@ -129,28 +129,28 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "N:"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.testTab), _translate("MainWindow", "Тестовая"))
         self.label_3.setText(_translate("MainWindow", "Минимальное число шагов:"))
-        self.textEdit.setMarkdown(_translate("MainWindow", "10\n"
+        self.minStep.setMarkdown(_translate("MainWindow", "10\n"
 "\n"
 ""))
         self.label_4.setText(_translate("MainWindow", "Максимальное число шагов:"))
-        self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.maxStep.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">15</p></body></html>"))
         self.label_5.setText(_translate("MainWindow", "Шаг:"))
-        self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.step.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">1</p></body></html>"))
         self.label_6.setText(_translate("MainWindow", "Константа домножения:"))
-        self.textEdit_4.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.mult.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">1</p></body></html>"))
-        self.pushButton.setText(_translate("MainWindow", "Построить"))
+        self.drawAccuracyButton.setText(_translate("MainWindow", "Построить"))
         self.rootTabControl.setTabText(self.rootTabControl.indexOf(self.accuracy), _translate("MainWindow", "График точности для тестовой задачи"))
         self.startCalcMain.setText(_translate("MainWindow", "Начать вычисления"))
         self.label.setText(_translate("MainWindow", "N:"))

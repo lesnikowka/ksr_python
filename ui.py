@@ -15,6 +15,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.setupUi(self)
         self.startCalcMain.clicked.connect(self.drawMain)
         self.startCalcTest.clicked.connect(self.drawTest)
+        self.drawAccuracyButton.clicked.connect(self.drawAccuracy)
 
         self.tableMain.setColumnCount(5)  # Set three columns
         self.tableMain.setRowCount(1)
@@ -124,6 +125,47 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
         for i in range(len(x)):
             self.addRowToTable(self.tableTest, [i + 1, x[i], y[i], y2[i], diff[i]])
+
+    def drawAccuracy(self):
+        graphName = "accuracyGraph.png"
+
+        minN = 0
+        maxN = 0
+        step = 0
+        mult = 0
+
+        try:
+            minN = int(self.minStep.toPlainText())
+            maxN = int(self.maxStep.toPlainText())
+            step = int(self.step.toPlainText())
+            mult = int(self.mult.toPlainText())
+        except BaseException:
+            return
+
+
+        N = []
+        acc = []
+
+        for i in range(minN, maxN + 1, step):
+            x, y, y2 = method.calculate("test", i)
+            diff = [abs(y[j] - y2[j]) for j in range(len(y))]
+            maxdiff = max(diff)
+            N.append(i)
+            acc.append(maxdiff)
+
+
+        plt.figure(figsize=[16,10])
+        plt.plot(N, acc)
+        plt.savefig(graphName)
+        plt.clf()
+        plt.figure(figsize=[8, 6])
+
+        size = self.graphAccuracy.size()
+        height = size.height()
+        self.resizeImage(graphName, height)
+        pixmap = QPixmap(graphName)
+        self.graphAccuracy.setPixmap(pixmap)
+
 
 
 def main():

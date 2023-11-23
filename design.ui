@@ -127,7 +127,7 @@ p, li { white-space: pre-wrap; }
        <string>Минимальное число шагов:</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit">
+     <widget class="QTextEdit" name="minStep">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -155,7 +155,7 @@ p, li { white-space: pre-wrap; }
        <string>Максимальное число шагов:</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_2">
+     <widget class="QTextEdit" name="maxStep">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -185,7 +185,7 @@ p, li { white-space: pre-wrap; }
        <string>Шаг:</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_3">
+     <widget class="QTextEdit" name="step">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -215,7 +215,7 @@ p, li { white-space: pre-wrap; }
        <string>Константа домножения:</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_4">
+     <widget class="QTextEdit" name="mult">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -232,7 +232,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="drawAccuracyButton">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -245,7 +245,7 @@ p, li { white-space: pre-wrap; }
        <string>Построить</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="graphAccuracy">
       <property name="geometry">
        <rect>
         <x>210</x>
