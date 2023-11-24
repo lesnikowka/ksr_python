@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import QtWidgets, QtGui
-from PyQt5.QtWidgets import QTabWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QTabWidget, QTableWidgetItem, QHeaderView
 import design
 from matplotlib import pyplot as plt
 from PyQt5.QtGui import QPixmap
@@ -20,11 +20,13 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.tableMain.setColumnCount(5)  # Set three columns
         self.tableMain.setRowCount(1)
         self.tableMain.setHorizontalHeaderLabels(["Номер узла", "X", "V", "V*", "|V-V*|"])
+        self.tableMain.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
         self.tableMain.verticalHeader().hide()
 
         self.tableTest.setColumnCount(5)  # Set three columns
         self.tableTest.setRowCount(1)
         self.tableTest.setHorizontalHeaderLabels(["Номер узла", "X", "V", "U", "|U-V|"])
+        self.tableTest.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
         self.tableTest.verticalHeader().hide()
 
         self.infoText = """
@@ -59,7 +61,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         rowCount = table.rowCount()
         columnCount = table.columnCount()
         for j in range(columnCount):
-            table.setItem(rowCount-1, j, QTableWidgetItem(str(data[j])[:10]))
+            table.setItem(rowCount-1, j, QTableWidgetItem(str(data[j])))
 
     def clearTable(self, table):
         rowCount = table.rowCount()
