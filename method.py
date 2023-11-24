@@ -148,10 +148,6 @@ def calculate(taskName, N):
         y = runTrough(bs, Ai, Bi, Ci, N)
         u_ = [u(i) for i in x]
 
-        print(x)
-        print(y)
-        print(u_)
-
         return x, y, u_
 
     else:
