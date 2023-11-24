@@ -17,13 +17,13 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.startCalcTest.clicked.connect(self.drawTest)
         self.drawAccuracyButton.clicked.connect(self.drawAccuracy)
 
-        self.tableMain.setColumnCount(5)  # Set three columns
+        self.tableMain.setColumnCount(5)
         self.tableMain.setRowCount(1)
         self.tableMain.setHorizontalHeaderLabels(["Номер узла", "X", "V", "V*", "|V-V*|"])
         self.tableMain.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
         self.tableMain.verticalHeader().hide()
 
-        self.tableTest.setColumnCount(5)  # Set three columns
+        self.tableTest.setColumnCount(5)
         self.tableTest.setRowCount(1)
         self.tableTest.setHorizontalHeaderLabels(["Номер узла", "X", "V", "U", "|U-V|"])
         self.tableTest.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
@@ -127,7 +127,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         x, y, y2 = method.calculate("test", N)
         diff = [abs(y[i] - y2[i]) for i in range(len(y))]
 
-        plt.title("Синий - численное решение")
+        plt.title("Синий - численное решение; Оранжевый - точное решение")
         plt.plot(x, y)
         plt.plot(x, y2)
         plt.savefig(graph1Name)
@@ -183,7 +183,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
             diff = [abs(y[j] - y2[j]) for j in range(len(y))]
             maxdiff = max(diff)
             N.append(i)
-            acc.append(maxdiff)
+            acc.append(maxdiff * mult)
 
 
         plt.figure(figsize=[16,10])
