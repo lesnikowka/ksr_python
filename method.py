@@ -134,9 +134,11 @@ def runTrough(b, Ai, Bi, Ci, n):
 
 #Аналитическое решение тестовой
 def u(x):
+    epsBound = 1e-5
+
     if x >= 0 and x <= 0.5:
         return 0.289601 * np.exp(2 * x / 3) - 0.289601 * np.exp(-(2 * x / 3))
-    elif x > 0.5 and x <= 1:
+    elif x > 0.5 and x <= 1 + epsBound:
         return -0.110262 * np.exp(2 * x) - 1.36897 * np.exp(-(2 * x)) + 1
 
 def calculate(taskName, N):
@@ -145,6 +147,10 @@ def calculate(taskName, N):
         bs, Ai, Bi, Ci = matrixInit(k1test, k2test, q1test, q2test, f1test, f2test, 0, 0, 0.5, N, a, b)
         y = runTrough(bs, Ai, Bi, Ci, N)
         u_ = [u(i) for i in x]
+
+        print(x)
+        print(y)
+        print(u_)
 
         return x, y, u_
 

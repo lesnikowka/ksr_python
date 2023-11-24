@@ -20,10 +20,12 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.tableMain.setColumnCount(5)  # Set three columns
         self.tableMain.setRowCount(1)
         self.tableMain.setHorizontalHeaderLabels(["Номер узла", "X", "V", "V*", "|V-V*|"])
+        self.tableMain.verticalHeader().hide()
 
         self.tableTest.setColumnCount(5)  # Set three columns
         self.tableTest.setRowCount(1)
-        self.tableTest.setHorizontalHeaderLabels(["Номер узла", "X", "U", "V", "|U-V|"])
+        self.tableTest.setHorizontalHeaderLabels(["Номер узла", "X", "V", "U", "|U-V|"])
+        self.tableTest.verticalHeader().hide()
 
         self.infoText = """
 Для решения задачи использована равномерная сетка с числом разбиений n = %;
@@ -61,7 +63,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
     def clearTable(self, table):
         rowCount = table.rowCount()
-        for i in range(0, rowCount - 2):
+        for i in range(0, rowCount - 1):
             table.removeRow(1)
 
 
@@ -103,7 +105,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.clearTable(self.tableMain)
 
         for i in range(len(x)):
-            self.addRowToTable(self.tableMain, [i + 1, x[i], y[i], y2[i], diff[i]])
+            self.addRowToTable(self.tableMain, [i, x[i], y[i], y2[i], diff[i]])
 
         maxdiff = max(diff)
         maxdiffIndex = diff.index(maxdiff)
@@ -148,7 +150,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.clearTable(self.tableTest)
 
         for i in range(len(x)):
-            self.addRowToTable(self.tableTest, [i + 1, x[i], y[i], y2[i], diff[i]])
+            self.addRowToTable(self.tableTest, [i, x[i], y[i], y2[i], diff[i]])
 
         maxdiff = max(diff)
         maxdiffIndex = diff.index(maxdiff)
