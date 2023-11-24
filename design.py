@@ -14,11 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1677, 901)
+        MainWindow.resize(1797, 901)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.rootTabControl = QtWidgets.QTabWidget(self.centralwidget)
-        self.rootTabControl.setGeometry(QtCore.QRect(0, 0, 1681, 881))
+        self.rootTabControl.setGeometry(QtCore.QRect(0, 0, 1791, 881))
         self.rootTabControl.setObjectName("rootTabControl")
         self.testTab = QtWidgets.QWidget()
         self.testTab.setObjectName("testTab")
@@ -40,7 +40,7 @@ class Ui_MainWindow(object):
         self.graph2Test.setText("")
         self.graph2Test.setObjectName("graph2Test")
         self.tableTest = QtWidgets.QTableWidget(self.testTab)
-        self.tableTest.setGeometry(QtCore.QRect(850, 0, 820, 840))
+        self.tableTest.setGeometry(QtCore.QRect(850, 0, 930, 840))
         self.tableTest.setObjectName("tableTest")
         self.tableTest.setColumnCount(0)
         self.tableTest.setRowCount(0)
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
         self.graph2Main.setText("")
         self.graph2Main.setObjectName("graph2Main")
         self.tableMain = QtWidgets.QTableWidget(self.mainTab)
-        self.tableMain.setGeometry(QtCore.QRect(850, 0, 820, 840))
+        self.tableMain.setGeometry(QtCore.QRect(850, 0, 930, 840))
         self.tableMain.setObjectName("tableMain")
         self.tableMain.setColumnCount(0)
         self.tableMain.setRowCount(0)
@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
         self.rootTabControl.addTab(self.mainTab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1677, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1797, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.rootTabControl.setCurrentIndex(0)
+        self.rootTabControl.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
