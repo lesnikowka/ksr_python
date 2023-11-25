@@ -84,10 +84,12 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         y2 = [y2[2 * i] for i in range(len(y))]
         diff = [abs(y[i] - y2[i]) for i in range(len(y))]
 
+        plt.title("Численное решение")
         plt.plot(x, y)
         plt.savefig(graph1Name)
         plt.clf()
 
+        plt.title("График точности")
         plt.plot(x, diff)
         plt.savefig(graph2Name)
         plt.clf()
@@ -133,6 +135,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         plt.savefig(graph1Name)
         plt.clf()
 
+        plt.title("График точности")
         plt.plot(x, diff)
         plt.savefig(graph2Name)
         plt.clf()
