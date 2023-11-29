@@ -114,11 +114,13 @@ def draw2dplot1(v, x, t):
         tlay = [t[i]] * len(x)
         plt.plot(tlay, v[i], 'green')
     plt.savefig("first2d.png")
+    plt.clf()
 
 def draw2dplot2(v, x, t):
     for i in range(len(v)):
         plt.plot(x, v[i], 'blue')
     plt.savefig("second2d.png")
+    plt.clf()
 
 def draw3d(v, x, t):
     v = np.array(v)
@@ -126,22 +128,23 @@ def draw3d(v, x, t):
     ax3d = fig.add_subplot(projection='3d')
     xgrid, tgrid = np.meshgrid(x, t)
     ax3d.plot_surface(xgrid, tgrid, v)
-
     plt.savefig("3d.png")
-    return 0
+    plt.clf()
 
-v, x, t = [], [], []
-v2, x2, t2 = [], [], []
+
+
 
 def calculate(n, m, tbound):
-    global v, x, t, x2, v2, t2
     v, x, t = start(n, m, 0, 1, 0, tbound)
-    v2, x2, t2 = start(n * 4, m * 2, 0, 1, 0, tbound)
-    # print(v[0])
+    v2, x2, t2 = start(n * 2 + 1, m * 2 + 1, 0, 1, 0, tbound)
+
     v2 = [v2[2 * i] for i in range(len(v))]
     for i in range(len(v2)):
-        v2[i] = [v2[i][4 * j] for j in range(len(v[i]))]
-    # print(v2[0])
+        v2[i] = [v2[i][2 * j] for j in range(len(v[i]))]
+
+    t2 = [t2[2 * i] for i in range(len(t))]
+    x2 = [x2[2 * i] for i in range(len(x))]
+
     diff = []
     difflay = []
     for i in range(len(v)):
@@ -152,6 +155,10 @@ def calculate(n, m, tbound):
     draw2dplot1(v, x, t)
     draw2dplot2(v, x, t)
     draw3d(v, x, t)
+
+    return v, x, t, v2, x2, t2
+
+
 
 
 

@@ -17,32 +17,26 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.start.clicked.connect(self.drawMain)
         self.pushButton.clicked.connect(self.showHelp)
 
-        self.table.setColumnCount(5)
+        self.table.setColumnCount(7)
         self.table.setRowCount(1)
-        self.table.setHorizontalHeaderLabels(["Номер узла", "X", "V", "V*", "|V-V*|"])
+        self.table.setHorizontalHeaderLabels(["Номер узла: строка", "Номер узла: столбец", "T", "X", "V", "V*", "|V-V*|"])
         self.table.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
         self.table.verticalHeader().hide()
 
 
         self.infoText = """
-Для решения задачи использована равномерная сетка с числом разбиений n = %;
+Для решения задачи использована равномерная сетка с числом разбиений по x: %, по t: % 
+0 <= x <= 1
+0 <= t <= %
+|V-V*| максимален и равен % при x=%, t = %;"""
 
-задача должна быть решена с заданной точностью ε = 0.5⋅10 –6; 
-
-задача решена с точностью ε2 = %; 
-
-максимальная разность численных решений в общих узлах сетки наблюдается в точке x=%;"""
-
-    def fillInfo(self, taskName, data):
+    def fillInfo(self, data):
         text = self.infoText
         for val in data:
             text = text.replace("%", str(val), 1)
-        if taskName == "main":
-            self.infoMain.clear()
-            self.infoMain.append(text)
-        else:
-            self.infoTest.clear()
-            self.infoTest.append(text)
+        self.infoMain.clear()
+        self.infoMain.append(text)
+
 
 
     def resizeImage(self, imageName, height):
@@ -80,9 +74,7 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         except BaseException:
             return
 
-
-        KSR.calculate(N_, M_, Tm_)
-
+        v, x, t, v2, x2, t2 = KSR.calculate(N_, M_, Tm_)
 
         size = self.first2d.size()
         height = size.height()
@@ -102,8 +94,27 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         pixmap = QPixmap(plane3d_)
         self.plane3d.setPixmap(pixmap)
 
+        self.clearTable(self.table)
+
+        maxabs = 0
+        maxabs_x = 0
+        maxabs_t = 0
+
+        for i in range(len(x)):
+            for j in range(len(v[i])):
+                curabs = abs(v[i][j]-v2[i][j])
+                if curabs > maxabs:
+                    maxabs = curabs
+                    maxabs_x = x[i]
+                    maxabs_t = t[j]
+                self.addRowToTable(self.table, [i, j, t[j], x[i], v[i][j], v2[i][j], abs(v[i][j]-v2[i][j])])
+
+        self.fillInfo([N_, M_, Tm_, maxabs, maxabs_x, maxabs_t])
+
+
+
+
     def showHelp(self):
-        print(100)
         subprocess.run("python helpui.py")
 
 
