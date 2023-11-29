@@ -2,32 +2,27 @@ import sys
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QTabWidget, QTableWidgetItem, QHeaderView
 import design
-from matplotlib import pyplot as plt
 from PyQt5.QtGui import QPixmap
 import cv2
 import imutils
-import method
-from PyQt5.QtCore import QSize, Qt
+import KSR
+import subprocess
+
+
 
 class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.startCalcMain.clicked.connect(self.drawMain)
-        self.startCalcTest.clicked.connect(self.drawTest)
-        self.drawAccuracyButton.clicked.connect(self.drawAccuracy)
+        self.start.clicked.connect(self.drawMain)
+        self.pushButton.clicked.connect(self.showHelp)
 
-        self.tableMain.setColumnCount(5)
-        self.tableMain.setRowCount(1)
-        self.tableMain.setHorizontalHeaderLabels(["Номер узла", "X", "V", "V*", "|V-V*|"])
-        self.tableMain.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
-        self.tableMain.verticalHeader().hide()
+        self.table.setColumnCount(5)
+        self.table.setRowCount(1)
+        self.table.setHorizontalHeaderLabels(["Номер узла", "X", "V", "V*", "|V-V*|"])
+        self.table.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
+        self.table.verticalHeader().hide()
 
-        self.tableTest.setColumnCount(5)
-        self.tableTest.setRowCount(1)
-        self.tableTest.setHorizontalHeaderLabels(["Номер узла", "X", "V", "U", "|U-V|"])
-        self.tableTest.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
-        self.tableTest.verticalHeader().hide()
 
         self.infoText = """
 Для решения задачи использована равномерная сетка с числом разбиений n = %;
@@ -70,137 +65,46 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
 
     def drawMain(self):
-        graph1Name = "graph1Main.png"
-        graph2Name = "graph2Main.png"
-
-        N = 0
-
-        try:
-            N = int(self.gridNumberMain.toPlainText())
-        except BaseException:
-            return
-
-        x, y, x2, y2 = method.calculate("main", N)
-        y2 = [y2[2 * i] for i in range(len(y))]
-        diff = [abs(y[i] - y2[i]) for i in range(len(y))]
-
-        plt.title("Численное решение")
-        plt.plot(x, y)
-        plt.savefig(graph1Name)
-        plt.clf()
-
-        plt.title("График точности")
-        plt.plot(x, diff)
-        plt.savefig(graph2Name)
-        plt.clf()
-
-        size = self.graph1Main.size()
-        height = size.height()
-        self.resizeImage(graph1Name, height)
-        pixmap = QPixmap(graph1Name)
-        self.graph1Main.setPixmap(pixmap)
-
-        size = self.graph2Main.size()
-        height = size.height()
-        self.resizeImage(graph2Name, height)
-        pixmap = QPixmap(graph2Name)
-        self.graph2Main.setPixmap(pixmap)
-
-        self.clearTable(self.tableMain)
-
-        for i in range(len(x)):
-            self.addRowToTable(self.tableMain, [i, x[i], y[i], y2[i], diff[i]])
-
-        maxdiff = max(diff)
-        maxdiffIndex = diff.index(maxdiff)
-        self.fillInfo("main", [N, maxdiff, x[maxdiffIndex]])
-
-    def drawTest(self):
-        graph1Name = "graph1Test.png"
-        graph2Name = "graph2Test.png"
-
-        N = 0
+        first2d_ = "first2d.png"
+        second2d_ = "second2d.png"
+        plane3d_ = "3d.png"
+        N_ = 0
+        M_ = 0
+        Tm_ = 0
 
         try:
-            N = int(self.gridNumberTest.toPlainText())
-        except BaseException:
-            return
+            N_ = int(self.N.toPlainText())
+            M_ = int(self.M.toPlainText())
+            Tm_ = int(self.Tm.toPlainText())
 
-        x, y, y2 = method.calculate("test", N)
-        diff = [abs(y[i] - y2[i]) for i in range(len(y))]
-
-        plt.title("Синий - численное решение; Оранжевый - точное решение")
-        plt.plot(x, y)
-        plt.plot(x, y2)
-        plt.savefig(graph1Name)
-        plt.clf()
-
-        plt.title("График точности")
-        plt.plot(x, diff)
-        plt.savefig(graph2Name)
-        plt.clf()
-
-        size = self.graph1Test.size()
-        height = size.height()
-        self.resizeImage(graph1Name, height)
-        pixmap = QPixmap(graph1Name)
-        self.graph1Test.setPixmap(pixmap)
-
-        size = self.graph2Test.size()
-        height = size.height()
-        self.resizeImage(graph2Name, height)
-        pixmap = QPixmap(graph2Name)
-        self.graph2Test.setPixmap(pixmap)
-
-        self.clearTable(self.tableTest)
-
-        for i in range(len(x)):
-            self.addRowToTable(self.tableTest, [i, x[i], y[i], y2[i], diff[i]])
-
-        maxdiff = max(diff)
-        maxdiffIndex = diff.index(maxdiff)
-        self.fillInfo("test", [N, maxdiff, x[maxdiffIndex]])
-
-    def drawAccuracy(self):
-        graphName = "accuracyGraph.png"
-
-        minN = 0
-        maxN = 0
-        step = 0
-        mult = 0
-
-        try:
-            minN = int(self.minStep.toPlainText())
-            maxN = int(self.maxStep.toPlainText())
-            step = int(self.step.toPlainText())
-            mult = int(self.mult.toPlainText())
         except BaseException:
             return
 
 
-        N = []
-        acc = []
-
-        for i in range(minN, maxN + 1, step):
-            x, y, y2 = method.calculate("test", i)
-            diff = [abs(y[j] - y2[j]) for j in range(len(y))]
-            maxdiff = max(diff)
-            N.append(i)
-            acc.append(maxdiff * mult)
+        KSR.calculate(N_, M_, Tm_)
 
 
-        plt.figure(figsize=[16,10])
-        plt.plot(N, acc)
-        plt.savefig(graphName)
-        plt.clf()
-        plt.figure(figsize=[8, 6])
-
-        size = self.graphAccuracy.size()
+        size = self.first2d.size()
         height = size.height()
-        self.resizeImage(graphName, height)
-        pixmap = QPixmap(graphName)
-        self.graphAccuracy.setPixmap(pixmap)
+        self.resizeImage(first2d_, height)
+        pixmap = QPixmap(first2d_)
+        self.first2d.setPixmap(pixmap)
 
+        size = self.second2d.size()
+        height = size.height()
+        self.resizeImage(second2d_, height)
+        pixmap = QPixmap(second2d_)
+        self.second2d.setPixmap(pixmap)
+
+        size = self.plane3d.size()
+        height = size.height()
+        self.resizeImage(plane3d_, height)
+        pixmap = QPixmap(plane3d_)
+        self.plane3d.setPixmap(pixmap)
+
+    def showHelp(self):
+        print(100)
+        subprocess.run("python helpui.py")
 
 
 def main():
